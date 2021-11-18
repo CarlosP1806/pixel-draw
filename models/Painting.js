@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const paintingSchema = new mongoose.Schema({
-    colorMatrix: {
+    pixelColorMatrix: {
         type: Array,
         required: true
     },
