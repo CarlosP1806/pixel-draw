@@ -25,8 +25,8 @@ app.get('/', (req, res) => {
     res.render('paint-edit');
 });
 
-// TESTING POST ROUTE
-app.post('/test', async (req, res) => {
+// POST route to save a new painting to db
+app.post('/new', async (req, res) => {
     const value = req.body;
     try {
         const painting = await Painting.create(value);

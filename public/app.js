@@ -1,4 +1,4 @@
-// Selectors
+// ===== CANVAS ACTIONS =====
 const canvas = document.querySelector('.canvas');
 
 // Global variables
@@ -8,7 +8,6 @@ let currentColor = [0,0,0] // Store rgb value of current paint color
 
 // Render canvas based on pixelColorMatrix
 function render() {
-    initializeColorMatrix();
     paintCanvas();
 }
 
@@ -53,7 +52,6 @@ canvas.addEventListener('click', (event) => {
     render();
 });
 
-
 // ===== TOOLKIT ACTIONS =====
 const selectColorTool = document.querySelector('#select-color');
 
@@ -67,8 +65,51 @@ selectColorTool.addEventListener('change', () => {
     currentColor = hexToRgb(selectColorTool.value);
 });
 
+// ===== MODAL ACTIONS =====
+const modalBtn = document.querySelector('#save');
+const overlay = document.querySelector('.overlay');
+const closeBtn = document.querySelector('.close-button');
+const savePaintingForm = document.querySelector('.save-painting-form');
 
+// Open save-painting modal
+modalBtn.addEventListener('click', () => {
+    const modal = document.querySelector('.save-modal');
+    modal.classList.add('active');
+    overlay.classList.add('active');
+});
 
-// Render on page first's load
+// Close save-painting modal
+closeBtn.addEventListener('click', () => {
+    const modal = document.querySelector('.save-modal');
+    modal.classList.remove('active');
+    overlay.classList.remove('active');
+});
+
+savePaintingForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    
+    const title = document.querySelector('#painting-title-input').value;
+    const author = document.querySelector('#painting-author-input').value;
+    if(!title || !author) return;
+
+    const newPainting = {
+        pixelColorMatrix,
+        title,
+        author
+    }
+
+    fetch('/new', {
+        headers: {
+            'content-type': 'application/json'
+        },
+        method: 'POST',
+        body: JSON.stringify(newPainting) 
+    })
+    .then(res => console.log(res))
+    .catch(err => console.log(err));
+})
+
+// ===== RENDER ON PAGE FIRST LOAD =====
 selectColorTool.value = '#000000'; // Reset default color to black
+initializeColorMatrix();
 render();
