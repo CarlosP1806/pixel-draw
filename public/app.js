@@ -53,7 +53,6 @@ canvas.addEventListener('click', (event) => {
     render();
 });
 
-
 // ===== TOOLKIT ACTIONS =====
 const selectColorTool = document.querySelector('#select-color');
 
@@ -67,8 +66,27 @@ selectColorTool.addEventListener('change', () => {
     currentColor = hexToRgb(selectColorTool.value);
 });
 
+// ===== MODAL ACTIONS =====
+const modalBtn = document.querySelector('#save');
+const overlay = document.querySelector('.overlay');
+const closeBtn = document.querySelector('.close-button');
+
+// Open save-painting modal
+modalBtn.addEventListener('click', () => {
+    const modal = document.querySelector('.save-modal');
+    modal.classList.add('active');
+    overlay.classList.add('active');
+});
+
+// Close save-painting modal
+closeBtn.addEventListener('click', () => {
+    const modal = document.querySelector('.save-modal');
+    modal.classList.remove('active');
+    overlay.classList.remove('active');
+});
 
 
-// Render on page first's load
+
+// ===== RENDER ON PAGE FIRST LOAD =====
 selectColorTool.value = '#000000'; // Reset default color to black
 render();

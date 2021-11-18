@@ -14,7 +14,7 @@
     <h1 class="logo">PixelDraw</h1>
     <ul class="nav">
       <li class="nav-item">
-        <a href="/" class="nav-btn">Save</a>
+        <p class="nav-btn" id="save">Save</a>
       </li>
       <li class="nav-item">
         <a href="/" class="nav-btn">New</a>
@@ -38,6 +38,28 @@
       <p>Eraser:</p>
     </aside>
   </main>
+
+  <!-- Save Painting modal -->
+  <div class="save-modal" id="modal">
+    <div class="modal-header">
+      <div class="modal-title">Save Painting</div>
+      <button class="close-button">&times;</button>
+    </div>
+    <div class="modal-body">
+      <form action="/" class="save-painting-form">
+        <div class="form-row">
+          <label for="painting-title-input">Title of Painting:</label>
+          <input type="text" id="painting-title-input">
+        </div>
+        <div class="form-row">
+          <label for="painting-author-input">Author of Painting:</label>
+          <input type="text" id="painting-author-input">
+        </div>
+        <button class="form-button">Save!</button>
+      </form>
+    </div>
+  </div>
+  <div class="overlay"></div>
 
   <script src="/app.js"></script>
 </body>
