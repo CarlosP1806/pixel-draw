@@ -59,7 +59,6 @@ main {
 .pixel-cell {
     width: 4rem;
     height: 4rem;
-    background: red;
     border: 1px solid black;
 }
 
