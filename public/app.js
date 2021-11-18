@@ -54,5 +54,21 @@ canvas.addEventListener('click', (event) => {
 });
 
 
+// ===== TOOLKIT ACTIONS =====
+const selectColorTool = document.querySelector('#select-color');
+
+// Respond to changes in selected color
+selectColorTool.addEventListener('change', () => {
+    // Convert current color from hex to rgb
+    function hexToRgb(hex) {
+        var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+        return [parseInt(result[1], 16), parseInt(result[2], 16), parseInt(result[3], 16)];
+    }
+    currentColor = hexToRgb(selectColorTool.value);
+});
+
+
+
 // Render on page first's load
+selectColorTool.value = '#000000'; // Reset default color to black
 render();
