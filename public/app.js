@@ -51,12 +51,18 @@ canvas.addEventListener('click', (event) => {
 
 // ===== TOOLKIT ACTIONS =====
 const selectColorTool = document.querySelector('#select-color');
+const eraserTool = document.querySelector('#eraser-label');
 
 // Respond to changes in selected color
 selectColorTool.addEventListener('change', () => {
     currentColor = selectColorTool.value;
     const currentColorLabel = document.querySelector('#select-color-label');
     currentColorLabel.style.color = currentColor;
+});
+
+// Respond to eraser click
+eraserTool.addEventListener('click', () => {
+    currentColor = '#ffffff';
 });
 
 // ===== MODAL ACTIONS =====
@@ -105,6 +111,7 @@ savePaintingForm.addEventListener('submit', (event) => {
 })
 
 // ===== RENDER ON PAGE FIRST LOAD =====
-selectColorTool.value = '#000000'; // Reset default color to black
+selectColorTool.value = '#ffffff'; // Reset default color to black
+
 initializeColorMatrix();
 render();
