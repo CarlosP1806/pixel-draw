@@ -4,7 +4,7 @@ const canvas = document.querySelector('.canvas');
 // Global variables
 let pixelColorMatrix = [];
 const colorMatrixSize = 32;
-let currentColor = '#000000' // Store hex value of current paint color
+let currentColor = '#FFF' // Store hex value of current paint color
 
 // Render canvas based on pixelColorMatrix
 function render() {
@@ -55,6 +55,8 @@ const selectColorTool = document.querySelector('#select-color');
 // Respond to changes in selected color
 selectColorTool.addEventListener('change', () => {
     currentColor = selectColorTool.value;
+    const currentColorLabel = document.querySelector('#select-color-label');
+    currentColorLabel.style.color = currentColor;
 });
 
 // ===== MODAL ACTIONS =====

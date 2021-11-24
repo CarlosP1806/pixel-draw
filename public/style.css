@@ -136,6 +136,61 @@ main {
     box-shadow: 0 2px 5px 0 rgba(0,0,0,0.01);
     padding: 1em;
     color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.toolkit i {
+    cursor: pointer;
+    border: 3px solid white;
+    border-radius: 5px;
+    padding: 0.2em;
+    position: relative;
+}
+
+.toolkit i::after {
+    width: 4rem;
+    position: absolute;
+    top: 0;
+    left: -5rem;
+    font-size: 1rem;
+    background-color: #ffc300;
+    height: 90%;
+    border-radius: 5px;
+    display: none;
+    padding: 0.2em;
+    color: #001d3d;
+}
+
+#select-color-label i {
+    font-size: 2rem;
+}
+
+#select-color-label i::after {
+    content: 'Pick Color';
+
+}
+#select-color-label i:hover::after {
+    display: flex;
+    align-items: center;
+}
+
+#select-color {
+    display: none;
+}
+
+#eraser-label i {
+    font-size: 1.8rem;
+    margin-top: 1em;
+}
+
+#eraser-label i::after {
+    content: 'Eraser';
+}
+#eraser-label i:hover::after {
+    display: flex;
+    align-items: center;
 }
 
 /* ===== MODAL STYLES ===== */
