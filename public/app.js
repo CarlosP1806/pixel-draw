@@ -4,20 +4,20 @@ const canvas = document.querySelector('.canvas');
 // Global variables
 let pixelColorMatrix = [];
 const colorMatrixSize = 8;
-let currentColor = [0,0,0] // Store rgb value of current paint color
+let currentColor = '#000000' // Store hex value of current paint color
 
 // Render canvas based on pixelColorMatrix
 function render() {
     paintCanvas();
 }
 
-// Initialize matrix of colors with all pixels set to white rgb(255,255,255)
+// Initialize matrix of colors with all pixels set to white hex #ffffff
 function initializeColorMatrix() {
     for(let i = 0; i < colorMatrixSize; i++) {
         pixelColorMatrix.push([]);
         for(let j = 0; j < colorMatrixSize; j++) {
-            // Insert rgb white as list [255,255,255]
-            pixelColorMatrix[i].push([255, 255, 255]); 
+            // Insert hex white 
+            pixelColorMatrix[i].push('#ffffff'); 
         }
     }
 }
@@ -27,11 +27,8 @@ function paintCanvas() {
     let currentRow = 0;
     let currentCol = 0;
     Array.from(canvas.children).forEach(pixel => {
-        const currentColor = pixelColorMatrix[currentRow][currentCol];
-
-        // Recall that current color is in list format: 0-red, 1-green, 2-blue
-        pixel.style.background = `
-            rgb(${currentColor[0]}, ${currentColor[1]}, ${currentColor[2]})`;
+        const currentPixelColor = pixelColorMatrix[currentRow][currentCol];
+        pixel.style.background = currentPixelColor;
 
         // Update current coordinates
         currentCol++;
@@ -57,12 +54,7 @@ const selectColorTool = document.querySelector('#select-color');
 
 // Respond to changes in selected color
 selectColorTool.addEventListener('change', () => {
-    // Convert current color from hex to rgb
-    function hexToRgb(hex) {
-        var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-        return [parseInt(result[1], 16), parseInt(result[2], 16), parseInt(result[3], 16)];
-    }
-    currentColor = hexToRgb(selectColorTool.value);
+    currentColor = selectColorTool.value;
 });
 
 // ===== MODAL ACTIONS =====
@@ -85,6 +77,7 @@ closeBtn.addEventListener('click', () => {
     overlay.classList.remove('active');
 });
 
+// Save painting to database when form is submitted
 savePaintingForm.addEventListener('submit', (event) => {
     event.preventDefault();
     
