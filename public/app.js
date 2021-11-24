@@ -3,7 +3,7 @@ const canvas = document.querySelector('.canvas');
 
 // Global variables
 let pixelColorMatrix = [];
-const colorMatrixSize = 8;
+const colorMatrixSize = 32;
 let currentColor = '#000000' // Store hex value of current paint color
 
 // Render canvas based on pixelColorMatrix
@@ -32,7 +32,7 @@ function paintCanvas() {
 
         // Update current coordinates
         currentCol++;
-        if(currentCol == 8){ currentRow++; currentCol = 0; } 
+        if(currentCol == colorMatrixSize){ currentRow++; currentCol = 0; } 
     });
 }
 
