@@ -77,6 +77,7 @@ closeBtn.addEventListener('click', () => {
     overlay.classList.remove('active');
 });
 
+// Save painting to database when form is submitted
 savePaintingForm.addEventListener('submit', (event) => {
     event.preventDefault();
     
