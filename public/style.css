@@ -124,7 +124,7 @@ main {
 .pixel-cell {
     width: 1.2rem;
     height: 1.2rem;
-    border: 0.2px solid #444;
+    border: 0.1px solid #777;
 }
 
 /* ===== TOOL STYLES ===== */
@@ -295,4 +295,36 @@ main {
 .overlay.active {
     opacity: 1;
     pointer-events: all;
+}
+
+/* ===== DISPLAY STYLES ===== */
+
+.display-section {
+    padding: 0 5em;
+    width: 100%;
+}
+
+.display-section h2 {
+    font-weight: normal;
+    font-size: 1.9rem;
+    font-style: italic;
+}
+
+.display-section h3 {
+    font-weight: normal;
+    font-size: 1.2rem;
+    font-style: italic;
+    margin-bottom: 1em;
+}
+
+.display-section .canvas-wrapper {
+    display: flex;
+    position: relative;
+    width: 100%;
+}
+
+.display-section .canvas {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }

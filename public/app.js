@@ -106,7 +106,8 @@ savePaintingForm.addEventListener('submit', (event) => {
         method: 'POST',
         body: JSON.stringify(newPainting) 
     })
-    .then(res => console.log(res))
+    .then(res => res.json())
+    .then(res => document.location.replace(`/${res._id}`))
     .catch(err => console.log(err));
 })
 
