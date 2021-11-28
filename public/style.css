@@ -163,6 +163,11 @@ main {
     color: #001d3d;
 }
 
+#select-color-label {
+    display: flex;
+    justify-content: center;
+}
+
 #select-color-label i {
     font-size: 2rem;
 }
@@ -177,7 +182,10 @@ main {
 }
 
 #select-color {
-    display: none;
+    transform: scale(0);
+    width: 0;
+    height: 0;
+    align-self: flex-end;
 }
 
 #eraser-label i {
@@ -200,16 +208,77 @@ main {
     left: 50%;
     transform: translate(-50%, -50%) scale(0);
     transition: 500ms ease-in-out;
-    border: 1px solid black;
     border-radius: 10px;
     z-index: 10;
     background-color: white;
     width: 800px;
     max-width: 80%;
+    overflow: hidden;
+    box-shadow: 0 5px 5px 0 rgba(0,0,0,0.1);
 }
 
 .save-modal.active {
     transform: translate(-50%, -50%) scale(1);
+}
+
+.save-modal .modal-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 1em;
+    background: #001d3d;
+}
+
+.save-modal .modal-title {
+    color: #ffc300;
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+.save-modal .close-button {
+    outline: none;
+    border: none;
+    background: none;
+}
+
+.save-modal .close-button i {
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.save-modal .close-button i:hover {
+    color: #ffc300;
+}
+
+.save-modal .modal-body {
+    padding: 1em;
+}
+
+.save-modal .form-row {
+    margin-bottom: 1em;
+}
+
+.save-modal .form-row input[type=text] {
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #111;
+    margin-left: .5em;
+}
+
+.save-modal .form-button {
+    background: #001d3d;
+    color: white;
+    padding: .5em 1em;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: .2s ease-in-out;
+}
+
+.save-modal .form-button:hover {
+    transform: scale(1.05);
 }
 
 .overlay {
