@@ -5,9 +5,11 @@ const canvas = document.querySelector('.canvas');
 let pixelColorMatrix = [];
 const colorMatrixSize = 32;
 let currentColor = '#FFF' // Store hex value of current paint color
+let currentTool = 'pencil' // Variable to determine which action is active
 
 // Render canvas based on pixelColorMatrix
 function render() {
+    renderToolkit();
     paintCanvas();
 }
 
@@ -44,12 +46,21 @@ canvas.addEventListener('click', (event) => {
     const selectedPixelRow = selectedPixel.dataset.row;
     const selectedPixelCol = selectedPixel.dataset.col;
 
-    pixelColorMatrix[selectedPixelRow][selectedPixelCol] = currentColor;
+    switch(currentTool) {
+        case "pencil":
+        pixelColorMatrix[selectedPixelRow][selectedPixelCol] = currentColor;
+        break;
+
+        case "eraser":
+        pixelColorMatrix[selectedPixelRow][selectedPixelCol] = '#ffffff';
+        break; 
+    }
 
     render();
 });
 
 // ===== TOOLKIT ACTIONS =====
+const toolkit = document.querySelector('.toolkit');
 const selectColorTool = document.querySelector('#select-color');
 const eraserTool = document.querySelector('#eraser-label');
 
@@ -60,10 +71,27 @@ selectColorTool.addEventListener('change', () => {
     currentColorLabel.style.color = currentColor;
 });
 
+// Respond to pencil click
+selectColorTool.addEventListener('click', () => {
+    currentTool = 'pencil';
+    renderToolkit();
+});
+
 // Respond to eraser click
 eraserTool.addEventListener('click', () => {
-    currentColor = '#ffffff';
+    currentTool = 'eraser';
+    renderToolkit();
 });
+
+// Render toolkit according and highlight currently selected tool
+function renderToolkit() {
+    Array.from(toolkit.children).forEach(tool => {
+        const toolIcon = tool.querySelector('i');
+        toolIcon.classList.remove('active');
+        if(toolIcon.id === currentTool)
+            toolIcon.classList.add('active');
+    });
+}
 
 // ===== MODAL ACTIONS =====
 const modalBtn = document.querySelector('#save');
