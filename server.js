@@ -30,7 +30,6 @@ app.get('/', (req, res) => {
 app.post('/new', async (req, res) => {
     const value = req.body;
     try {
-        console.log('trying to create painting');
         const painting = await Painting.create(value);
         res.status(200).json(painting);
     } catch(error) { 
@@ -42,7 +41,7 @@ app.post('/new', async (req, res) => {
 app.get('/:id', async (req, res) => {
     try {
         const painting = await Painting.findById(req.params.id);
-        res.status(500).render('paint-display', { painting });
+        res.status(200).render('paint-display', { painting });
     } catch(error) {
         res.status(404).redirect('/'); // No painting found
     }
