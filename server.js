@@ -40,7 +40,6 @@ app.post('/new', async (req, res) => {
 app.get('/:id', async (req, res) => {
     try {
         const painting = await Painting.findById(req.params.id);
-        console.log(painting.title);
         res.status(500).render('paint-display', { painting });
     } catch(error) {
         res.status(404).redirect('/'); // No painting found

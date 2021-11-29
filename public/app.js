@@ -3,8 +3,8 @@ const canvas = document.querySelector('.canvas');
 
 // Global variables
 let pixelColorMatrix = [];
-const colorMatrixSize = 8;
-let currentColor = '#000000' // Store hex value of current paint color
+const colorMatrixSize = 32;
+let currentColor = '#FFF' // Store hex value of current paint color
 
 // Render canvas based on pixelColorMatrix
 function render() {
@@ -32,7 +32,7 @@ function paintCanvas() {
 
         // Update current coordinates
         currentCol++;
-        if(currentCol == 8){ currentRow++; currentCol = 0; } 
+        if(currentCol == colorMatrixSize){ currentRow++; currentCol = 0; } 
     });
 }
 
@@ -51,10 +51,18 @@ canvas.addEventListener('click', (event) => {
 
 // ===== TOOLKIT ACTIONS =====
 const selectColorTool = document.querySelector('#select-color');
+const eraserTool = document.querySelector('#eraser-label');
 
 // Respond to changes in selected color
 selectColorTool.addEventListener('change', () => {
     currentColor = selectColorTool.value;
+    const currentColorLabel = document.querySelector('#select-color-label');
+    currentColorLabel.style.color = currentColor;
+});
+
+// Respond to eraser click
+eraserTool.addEventListener('click', () => {
+    currentColor = '#ffffff';
 });
 
 // ===== MODAL ACTIONS =====
@@ -98,11 +106,13 @@ savePaintingForm.addEventListener('submit', (event) => {
         method: 'POST',
         body: JSON.stringify(newPainting) 
     })
-    .then(res => console.log(res))
+    .then(res => res.json())
+    .then(res => document.location.replace(`/${res._id}`))
     .catch(err => console.log(err));
 })
 
 // ===== RENDER ON PAGE FIRST LOAD =====
-selectColorTool.value = '#000000'; // Reset default color to black
+selectColorTool.value = '#ffffff'; // Reset default color to black
+
 initializeColorMatrix();
 render();

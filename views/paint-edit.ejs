@@ -7,25 +7,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/style.css">
   <title>PixelDraw</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
   <header>
-    <h1 class="logo">PixelDraw</h1>
+    <h1 class="logo">Pixel<span class="secondary-color">Draw</span></h1>
     <ul class="nav">
       <li class="nav-item">
-        <p class="nav-btn" id="save">Save</a>
+        <p class="nav-btn" id="save"><i class="fa fa-save"></i></p>
       </li>
       <li class="nav-item">
-        <a href="/" class="nav-btn">New</a>
+        <a href="/" class="nav-btn" id="new"><i class="fa fa-plus-square"></i></a>
       </li>
     </ul>
   </header>
   <main>
     <section class="canvas-section">
       <div class="canvas">
-        <% for(let i = 0; i < 8; i++) { %>
-          <% for(let j = 0; j < 8; j++) { %> 
+        <% for(let i = 0; i < 32; i++) { %>
+          <% for(let j = 0; j < 32; j++) { %> 
             <div class="pixel-cell" id="px-<%=i%>-<%=j%>"
               data-row="<%=i%>" data-col="<%=j%>"></div>
           <% } %> 
@@ -33,9 +35,10 @@
       </div>
     </section>
     <aside class="toolkit">
-      <label for="select-color">Selected Color:</label>
-      <input type="color" id="select-color">
-      <p>Eraser:</p>
+      <label id="select-color-label"><i class="fa fa-pencil"></i>
+        <input type="color" id="select-color">
+      </label>
+      <p id="eraser-label"><i class="fa fa-eraser"></i></p>
     </aside>
   </main>
 
@@ -43,7 +46,7 @@
   <div class="save-modal" id="modal">
     <div class="modal-header">
       <div class="modal-title">Save Painting</div>
-      <button class="close-button">&times;</button>
+      <button class="close-button"><i class="fa fa-times-circle"></i></button>
     </div>
     <div class="modal-body">
       <form action="/" class="save-painting-form">
