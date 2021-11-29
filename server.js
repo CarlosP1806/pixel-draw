@@ -1,13 +1,14 @@
 // Dependencies
 const express = require('express');
 const mongoose = require('mongoose');
+require('dotenv').config();
 
 // Setup application
 const app = express();
 const PORT = process.env.PORT || 3001;
 
 // Connect to paintings database
-mongoose.connect('mongodb://localhost/pixeldraw', {
+mongoose.connect(process.env.DB_URL, {
     useUnifiedTopology: true,
     useNewUrlParser: true
 });
