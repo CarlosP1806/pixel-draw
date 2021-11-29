@@ -30,6 +30,7 @@ app.get('/', (req, res) => {
 app.post('/new', async (req, res) => {
     const value = req.body;
     try {
+        console.log('trying to create painting');
         const painting = await Painting.create(value);
         res.status(200).json(painting);
     } catch(error) { 
