@@ -116,7 +116,7 @@ closeBtn.addEventListener('click', () => {
 // Save painting to database when form is submitted
 savePaintingForm.addEventListener('submit', (event) => {
     event.preventDefault();
-    
+    console.log('trying to post');
     const title = document.querySelector('#painting-title-input').value;
     const author = document.querySelector('#painting-author-input').value;
     if(!title || !author) return;

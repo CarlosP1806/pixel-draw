@@ -31,7 +31,6 @@ app.post('/new', async (req, res) => {
     const value = req.body;
     try {
         const painting = await Painting.create(value);
-        console.log(painting);
         res.status(200).json(painting);
     } catch(error) { 
         res.status(500).json({message: error});
