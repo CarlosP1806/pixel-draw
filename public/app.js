@@ -127,6 +127,7 @@ savePaintingForm.addEventListener('submit', (event) => {
     }
 
     fetch('/new', {
+        mode: 'cors',
         headers: {
             'content-type': 'application/json'
         },

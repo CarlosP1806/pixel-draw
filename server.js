@@ -29,7 +29,6 @@ app.get('/', (req, res) => {
 // POST route to save a new painting to db
 app.post('/new', async (req, res) => {
     const value = req.body;
-    console.log('trying to post');
     try {
         const painting = await Painting.create(value);
         res.status(200).json(painting);
