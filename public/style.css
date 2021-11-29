@@ -101,11 +101,43 @@ header #new::after {
     border-radius: 5px;
 }
 
+@media screen and (max-width: 768px) {
+    h1, h2, h3, h4 {
+        font-size: 1.5rem;
+    }
+    
+    header {
+        flex-direction: column;
+    }
+
+    header .nav {
+        margin-top: .5em;
+    }
+
+    .nav .nav-item:first-child {
+        margin-left: 0;
+    }
+
+    header #save, header #new {
+        font-size: 1.5rem;
+    }
+}
+
 /* ===== MAIN STYLES ===== */
 main {
     display: flex;
     margin: 1rem;
     flex: 1;
+}
+
+@media screen and (max-width: 1000px) {
+    main {
+        flex-direction: column-reverse;
+    }
+
+    main.display-main {
+        flex-direction: column;
+    }
 }
 
 /* ===== CANVAS STYLES ===== */
@@ -125,6 +157,46 @@ main {
     width: 1.2rem;
     height: 1.2rem;
     border: 0.1px solid #777;
+}
+
+@media screen and (max-width: 1000px) {
+    .canvas-section {
+        margin-top: 1.2em;
+        display: inline-block;
+    }
+}
+
+@media screen and (max-width: 764px) {
+    .canvas {
+        grid-template-columns: repeat(32, 1rem);
+    }
+
+    .pixel-cell {
+        width: 1rem;
+        height: 1rem;
+    }
+}
+
+@media screen and (max-width: 628px) {
+    .canvas {
+        grid-template-columns: repeat(32, .8rem);
+    }
+
+    .pixel-cell {
+        width: .8rem;
+        height: .8rem;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .canvas {
+        grid-template-columns: repeat(32, .6rem);
+    }
+
+    .pixel-cell {
+        width: .6rem;
+        height: .6rem;
+    }
 }
 
 /* ===== TOOL STYLES ===== */
@@ -203,6 +275,34 @@ main {
 #eraser-label i:hover::after {
     display: flex;
     align-items: center;
+}
+
+@media screen and (max-width: 1000px) {
+    .toolkit {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    #eraser-label i {
+        margin-top: 0;
+        margin-left: 1em;
+    }
+}
+
+@media screen and (max-width: 764px) {
+    .toolkit i::after {
+        position: absolute;
+        left: 0;
+        top: 2.1em;
+    }
+
+    #select-color-label i {
+        font-size: 1.2rem;
+    }
+
+    #eraser-label i {
+        font-size: 1.15rem;
+    }
 }
 
 /* ===== MODAL STYLES ===== */
@@ -331,4 +431,19 @@ main {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
+}
+
+@media screen and (max-width: 764px) {
+    .display-section {
+        padding: 0;
+    }
+
+    .display-section h2 {
+        font-size: 1.3rem;
+        text-align: center;
+    }
+    .display-section h3 {
+        font-size: 1rem;
+        text-align: center;
+    }
 }
